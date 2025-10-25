@@ -1,6 +1,8 @@
-package ar.unahur.edu.obj2.patroncommand;
+package ar.unahur.edu.obj2.patroncommand.microcontrolador;
 
 import java.util.List;
+
+import ar.unahur.edu.obj2.patroncommand.operaciones.Operable;
 
 public interface Programable {
 
@@ -23,4 +25,8 @@ public interface Programable {
     Integer getAddr(Integer addr);
 
     void reset();
+
+    Programable copiar();
+
+    void copiarDesde(Programable microDeRespaldo);
 }
