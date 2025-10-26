@@ -52,7 +52,7 @@ public class Microcontrolador implements Programable{
     }
 
     private void estaDentroDelRangoDeMemoria(Integer addr){
-        if(addr <0 || addr > memoria.size()) {
+        if(addr <0 || addr >= memoria.size()) {
             throw new FueraDeRangoDeMemoriaException();
         }
     }
