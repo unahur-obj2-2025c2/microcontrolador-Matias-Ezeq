@@ -55,4 +55,46 @@ public class MicrocontroladorTest {
         programa.ejecutar(micro);
         assertEquals(15,micro.getAcumuladorA());
     }
+
+    @Test
+    public void saltoCOndicionalAcumuladorADistintoACeroCambiaValorSiCumple() {
+        IFNZ condicional = new IFNZ();
+        condicional.agregarOperacion(new LODV(2));
+        programa.agregarOperacion(new LODV(1));
+        programa.agregarOperacion(condicional);
+        programa.ejecutar(micro);
+
+        assertEquals(2, micro.getAcumuladorA());
+    }
+
+    @Test
+    public void saltoCOndicionalAcumuladorADistintoACeroNoCambiaValorSiNoCumple() {
+        IFNZ condicional = new IFNZ();
+        condicional.agregarOperacion(new LODV(2));
+        programa.agregarOperacion(condicional);
+        programa.ejecutar(micro);
+
+        assertEquals(0, micro.getAcumuladorA());
+    }
+
+    @Test
+    public void saltoCOndicionalAcumuladorAIgualACeroCambiaValorSiCumple() {
+        WHNZ condicional = new WHNZ();
+        condicional.agregarOperacion(new LODV(2));
+        programa.agregarOperacion(condicional);
+        programa.ejecutar(micro);
+
+        assertEquals(2, micro.getAcumuladorA());
+    }
+
+    @Test
+    public void saltoCOndicionalAcumuladorAIgualACeroNoCambiaValorSiNoCumple() {
+        WHNZ condicional = new WHNZ();
+        condicional.agregarOperacion(new LODV(2));
+        programa.agregarOperacion(new LODV(1));
+        programa.agregarOperacion(condicional);
+        programa.ejecutar(micro);
+
+        assertEquals(1, micro.getAcumuladorA());
+    }
 }
